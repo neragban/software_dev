@@ -21,7 +21,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY "Multi-Thread Port Scanner.py" ./port_scanner.py
+COPY Multi_Thread_Port_Scanner.py ./port_scanner.py
 
 # Create directory for scan results
 RUN mkdir -p /app/results
