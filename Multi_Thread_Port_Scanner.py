@@ -1,10 +1,3 @@
-#This is a multi-threaded port scanner that 
-#scans network devices for open ports and attempts 
-# to identify device types. It uses concurrent threading 
-# to efficiently scan multiple ports simultaneously and 
-# provides both basic port scanning and HTTP service checking capabilities. 
-
-
 import socket
 import threading
 import time
