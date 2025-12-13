@@ -21,13 +21,13 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY "Multi-Thread Port Scanner.py" ./port_scanner.py
+COPY "Multi-Thread Port Scanner.py" ./
 
 # Create directory for scan results
 RUN mkdir -p /app/results
 
 # Set permissions
-RUN chmod +x /app/port_scanner.py
+RUN chmod +x "/app/Multi-Thread Port Scanner.py"
 
 # Create a non-root user for security
 RUN useradd -m -u 1000 scanner && \
@@ -39,4 +39,4 @@ USER scanner
 # The container will run interactively
 
 # Default command to run the scanner
-CMD ["python", "port_scanner.py"]
+CMD ["python", "Multi-Thread Port Scanner.py"]

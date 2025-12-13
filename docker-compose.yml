@@ -14,8 +14,3 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
     
-    # Optional: uncomment to run specific commands
-    # command: python port_scanner.py
-    
-    # For debugging, you can override the command:
-    # command: /bin/bash
