@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  port-scanner:
+    build: .
+    image: raspberry-port-scanner:latest
+    container_name: port-scanner
+    stdin_open: true  # Keep STDIN open for interactive input
+    tty: true         # Allocate a pseudo-TTY
+    network_mode: host  # Use host network for port scanning
+    volumes:
+      - ./results:/app/results  # Mount results directory
+    restart: "no"  # Don't restart automatically since this is an interactive tool
+    environment:
+      - PYTHONUNBUFFERED=1
+    
+    # Optional: uncomment to run specific commands
+    # command: python port_scanner.py
+    
+    # For debugging, you can override the command:
+    # command: /bin/bash
