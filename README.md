@@ -25,9 +25,9 @@ This directory contains a multi-threaded port scanner optimized for deployment o
    sudo pip3 install docker-compose
    ```
 
-## Quick Start
+##  Start
 
-### Method 1: Using the deployment script (Recommended)
+### Method 1: Using the deployment script 
 
 1. Make the script executable:
    ```bash
@@ -97,40 +97,11 @@ The container uses `--network host` mode, which allows it to:
 - Results are stored in a mounted volume outside the container
 - No unnecessary ports are exposed
 
-## Troubleshooting
-
-1. **Permission denied when running deploy.sh**
-   ```bash
-   chmod +x deploy.sh
-   ```
-
-2. **Docker daemon not running**
-   ```bash
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   ```
-
-3. **Network scanning not working**
-   - Ensure the container is running with `--network host`
-   - Check that Docker has the necessary permissions
-   - Verify the Raspberry Pi is connected to the network
-
-4. **Build fails on Raspberry Pi**
-   - Make sure you have enough free space (at least 1GB)
-   - Check internet connectivity for downloading dependencies
-
 ## File Locations
 
 - **Scan results**: `./results/scan_results.txt`
 - **Application logs**: Use `./deploy.sh logs` to view
 - **Container data**: Stored in Docker volumes
-
-## Performance Notes
-
-- Scanning speed depends on network latency and target responsiveness
-- The default timeout is set to 0.3 seconds per port
-- Raspberry Pi 4 recommended for best performance
-- Consider adjusting thread count for older Raspberry Pi models
 
 ## Customization
 
