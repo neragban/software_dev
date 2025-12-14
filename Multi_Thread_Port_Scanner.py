@@ -34,7 +34,7 @@ def scan_port(ip, port):
     try:
         s.connect((ip, port))
         open_ports.append(port)
-    except:
+    except (socket.error, OSError):
         pass
     s.close()
 
