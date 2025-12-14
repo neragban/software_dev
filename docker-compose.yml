@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   port-scanner:
     build: .
