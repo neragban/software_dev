@@ -24,9 +24,11 @@ COMMON_PORTS = {
 
 open_ports = []
 
+
 def log(text):
     with open("scan_results.txt", "a") as f:
         f.write(text + "\n")
+
 
 def scan_port(ip, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -38,12 +40,14 @@ def scan_port(ip, port):
         pass
     s.close()
 
+
 def guess_device(ports):
     if 445 in ports or 139 in ports or 135 in ports:
         return "Windows device"
     if 22 in ports:
         return "Linux / Unix / Raspberry Pi"
     return "Unknown device"
+
 
 def start_scan(ip):
     open_ports.clear()
@@ -72,6 +76,7 @@ def start_scan(ip):
         print(f"{RED}\nNo common ports open on {ip}.{RESET}")
         log(f"No ports open for {ip}")
 
+
 def check_http_service(url):
     print(f"{YELLOW}Checking HTTP service: {url}{RESET}")
     log(f"Checking URL: {url}")
@@ -91,6 +96,7 @@ def check_http_service(url):
     except Exception as e:
         print(f"{RED}Error: {e}{RESET}")
         log(f"HTTP {url} -> ERROR: {e}")
+
 
 if __name__ == "__main__":
     print("1) Port Scan")
