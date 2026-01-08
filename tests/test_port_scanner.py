@@ -1,10 +1,6 @@
-import os
-import sys
 from unittest.mock import MagicMock, patch
 
 import pytest
-
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from Multi_Thread_Port_Scanner import guess_device
 
