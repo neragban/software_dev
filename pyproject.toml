@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "port-scanner"
+version = "1.0.0"
+description = "Multi-threaded port scanner for Raspberry Pi"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "S"]
+ignore = ["E501"]  # Line too long handled by formatter
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S"]  # Security issues in tests are less critical
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers --tb=short -v"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+]
+
+[tool.coverage.run]
+source = ["Multi_Thread_Port_Scanner.py"]
+omit = ["*/tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+]
+min_coverage = 70
