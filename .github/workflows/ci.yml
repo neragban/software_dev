@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ software_dev_branch ]
+    branches: [ main ]
 
 jobs:
   quality:
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Push to GitHub Container Registry
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/software_dev_branch'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       packages: write
       contents: read
