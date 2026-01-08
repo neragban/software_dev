@@ -4,10 +4,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-# Add parent directory to path to import the scanner module
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import functions from the scanner
 from Multi_Thread_Port_Scanner import guess_device
 
 
