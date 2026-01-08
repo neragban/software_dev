@@ -1,8 +1,8 @@
-import pytest
-import socket
-from unittest.mock import patch, MagicMock
-import sys
 import os
+import sys
+from unittest.mock import MagicMock, patch
+
+import pytest
 
 # Add parent directory to path to import the scanner module
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -49,14 +49,14 @@ class TestPortScanning:
         """Test successful connection to open port."""
         mock_socket = MagicMock()
         mock_socket_class.return_value = mock_socket
-        
+
         from Multi_Thread_Port_Scanner import scan_port
-        
+
         # Mock successful connection
         mock_socket.connect.return_value = None
-        
+
         scan_port("127.0.0.1", 80)
-        
+
         # Verify socket was created and connected
         mock_socket_class.assert_called_once()
         mock_socket.connect.assert_called_once_with(("127.0.0.1", 80))
@@ -66,15 +66,15 @@ class TestPortScanning:
         """Test connection failure to closed port."""
         mock_socket = MagicMock()
         mock_socket_class.return_value = mock_socket
-        
+
         from Multi_Thread_Port_Scanner import scan_port
-        
+
         # Mock connection error
-        mock_socket.connect.side_effect = socket.error("Connection refused")
-        
+        mock_socket.connect.side_effect = OSError("Connection refused")
+
         # Should not raise exception
         scan_port("127.0.0.1", 9999)
-        
+
         mock_socket.close.assert_called_once()
 
 
@@ -84,7 +84,7 @@ class TestCommonPorts:
     def test_common_ports_defined(self):
         """Test that COMMON_PORTS dictionary is properly defined."""
         from Multi_Thread_Port_Scanner import COMMON_PORTS
-        
+
         assert isinstance(COMMON_PORTS, dict)
         assert 22 in COMMON_PORTS
         assert COMMON_PORTS[22] == "SSH"

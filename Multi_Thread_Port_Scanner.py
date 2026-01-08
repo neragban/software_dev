@@ -1,6 +1,7 @@
 import socket
 import threading
 import time
+
 import requests
 
 # Colored printing
@@ -36,7 +37,7 @@ def scan_port(ip, port):
     try:
         s.connect((ip, port))
         open_ports.append(port)
-    except (socket.error, OSError):
+    except OSError:
         pass
     s.close()
 
